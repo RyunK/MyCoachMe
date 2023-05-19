@@ -16,4 +16,5 @@
 https://docs.google.com/spreadsheets/d/1bEPFfrn552N6-JXK5pWC_CzyTg8nL3VsW77ZMLw0NTI/edit?usp=sharing
 
 User_data, Models >> main/models.py 에서 정의
+
 Training_data, Train_video >> health_do/models.py 에서 정의
