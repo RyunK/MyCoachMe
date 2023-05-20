@@ -1,5 +1,5 @@
 
-body {
+.main_body {
     width: auto;
     height: 100%;
     background: #BDC2C3 url("images/background2.jpg") no-repeat top;
@@ -14,6 +14,7 @@ body {
     text-align: center; /* h1 태그의 수평 정렬을 설정합니다 */
     margin: 0 auto; /* 가운데 정렬을 위해 좌우 여백(margin)을 auto로 설정합니다 */
     font-family: 'Noto Serif KR', serif;
+    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .page_title {
@@ -24,6 +25,7 @@ body {
     text-align: center; /* h1 태그의 수평 정렬을 설정합니다 */
     margin: 0 auto; /* 가운데 정렬을 위해 좌우 여백(margin)을 auto로 설정합니다 */
     font-family: 'Jua', sans-serif;
+    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .container {

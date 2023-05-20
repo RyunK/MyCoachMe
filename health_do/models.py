@@ -3,7 +3,7 @@ from main.models import User_data
 
 class Train_video(models.Model):
     video_name = models.CharField(max_length=20)
-    video_id = models.CharField(max_length=20, primary_key=True)
+    video_id = models.IntegerField(primary_key=True)
     main_body = models.CharField(max_length=20)
 
     def __str__(self):
