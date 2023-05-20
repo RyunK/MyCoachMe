@@ -3,8 +3,8 @@ from django.db import models
 
 class User_data(models.Model):
     lack_health_choices = [
-        ('arm', '왼팔 팔꿈치'),
-        ('elbow', '팔꿈치 아래'),
+        ('arm', '팔꿈치 위 팔'),
+        ('elbow', '팔꿈치 아래 팔'),
         ('waist', '허리'),
         ('leg', '허벅지'),
         ('knee', '종아리'),

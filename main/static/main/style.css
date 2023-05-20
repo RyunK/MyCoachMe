@@ -18,3 +18,13 @@ body {
     margin: 0 auto; /* 가운데 정렬을 위해 좌우 여백(margin)을 auto로 설정합니다 */
     font-family: 'Noto Serif KR', serif;
 }
+
+.page_title {
+    font-size: 70px;
+    color: white;
+    position: relative; /* h1 태그의 위치를 조정하기 위해 상대 위치 속성을 사용합니다 */
+    top: 50px; /* h1 태그를 위로 200px 이동시킵니다 */
+    text-align: center; /* h1 태그의 수평 정렬을 설정합니다 */
+    margin: 0 auto; /* 가운데 정렬을 위해 좌우 여백(margin)을 auto로 설정합니다 */
+    font-family: 'Jua', sans-serif;
+}
