@@ -4,13 +4,13 @@
 2. 터미널, 프로젝트 경로에서 다음 명령어 사용
 
 ```
-  py manage.py makemigration main
-  py manage.py makemigration health_do
+py manage.py makemigration main
+py manage.py makemigration health_do
 ```
 
 그 후 다음 명령어 사용
 ```
-  py manage.py migrate
+py manage.py migrate
 ```
 참고 : DB 구조 시트
 https://docs.google.com/spreadsheets/d/1bEPFfrn552N6-JXK5pWC_CzyTg8nL3VsW77ZMLw0NTI/edit?usp=sharing

@@ -7,7 +7,7 @@ class Train_video(models.Model):
     main_body = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.video_id
+        return str(self.video_id)+self.video_name
 
 class Training_data(models.Model):
     user_id = models.ForeignKey(User_data, on_delete=models.CASCADE)
@@ -24,4 +24,4 @@ class Training_data(models.Model):
     Lknee = models.FloatField()
 
     def __str__(self):
-        return self.user_id
+        return self.user_id.user_id
