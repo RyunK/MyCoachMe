@@ -25,3 +25,34 @@
     color: white;
     font-size: 25px;
 }
+
+.imgs_container {
+    width: 1050px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: 0 auto;
+}
+
+.img_box {
+    width: 320px;
+    text-align: center;
+    background-color: #C8ECFF;
+    border-radius: 10px;
+}
+
+img {
+    width: 320px;
+    height: 180px;
+}
+
+label {
+    font-family: 'Gamja Flower', cursive;
+    font-size: 20px;
+    color: #48AAE1;
+}
+
+a {
+        text-decoration-line: none
+}
