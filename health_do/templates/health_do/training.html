@@ -3,7 +3,7 @@
 <head>
     {% load static %}
     <link rel="stylesheet" href="{% static 'health_do/style.css' %}">
-<!--    <link rel="stylesheet" href='../../static/health_do/style.css'>-->
+    <link rel="stylesheet" href='../../static/health_do/style.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -19,11 +19,14 @@
         <label class="explain">운동 시작 버튼을 누르고 3초 기다린 후 운동을 시작하세요.</label>
     </div>
     <div class="btns_grid">
-        <label id="countdown" class="font_style">먼저 운동 시작 버튼을 누르세요!</label>
+<!--        <label id="countdown" class="font_style">먼저 운동 시작 버튼을 누르세요!</label>-->
         <button id="btn_start" class="font_style btn btnBlue">운동 시작</button>
         <button id="btn_stop" class="font_style btn btnGray">운동 끝</button>
     </div>
-
+    <div id="countdownContainer" style="display:none;position:fixed;top:50%;left:50%;width:30%;transform: translate(-50%, -50%);background-color: rgba(255, 255, 255, 0.8);;
+    border:2px solid black;padding:20px;font-size:48px;text-align:center;font-family: 'Gamja Flower', cursive;">
+            <span id="countdown"></span>
+        </div>
     <main class="video_box">
         <div style="display: flex;width:100%">
             <div style="flex:1;">
@@ -31,7 +34,7 @@
             </div>
             <div style="flex:2;text-align:center;">
 <!--                <video id="video" src="../../static/health_do/trainer_videos/boomerang.mp4"  class="video_style" width="100%" muted ></video>-->
-                 <video id="video" src="{% static 'health_do/trainer_videos/boomerang.mp4' %}"  class="video_style" width="100%" muted ></video>
+                 <video id="video_professor" src="{% static 'health_do/trainer_videos/boomerang.mp4' %}"  class="video_style" width="100%" muted ></video>
             </div>
         </div>
         <div style="display: flex;width:100%">
@@ -43,93 +46,7 @@
             </div>
         </div>
 <!--        <video id="video_record" controls></video>-->
-        <script>
-            /*참고블로그: https://curryyou.tistory.com/447*/
-            const $video = document.getElementById('video');
-            const $video_user = document.querySelector("#video_user");
-            const $video_record = document.querySelector("#video_record");
-            const $btn_start = document.querySelector('#btn_start');
-            const $btn_stop = document.querySelector('#btn_stop');
-
-            var countdownElement = document.getElementById('countdown');
-
-            const arrVideoData = [];
-
-            // 시작 버튼 이벤트 처리
-            $btn_start.onclick = async function(event) {
-
-                console.log("녹화시작")
-                // 카메라 입력영상 스트림 생성
-                const mediaStream = await navigator.mediaDevices.getUserMedia({
-                    video: true
-                });
-
-                // 실시간 영상 재생 처리: 첫번째 video태그에서 재생
-                $video_user.srcObject = mediaStream;
-                $video_user.onloadedmetadata = (event)=>{
-                    $video_user.play();
-                }
-
-                // mediaRecorder객체(녹화기) 생성
-                mediaRecorder = new MediaRecorder(mediaStream);
-
-
-                // 녹화 데이터 입력 이벤트 처리
-                mediaRecorder.ondataavailable = (event)=>{
-                    // 녹화 데이터(Blob)가 들어올 때마다 배열에 담아두기
-                    arrVideoData.push(event.data);
-                }
-
-
-                // 녹화 종료 이벤트 처리
-                mediaRecorder.onstop = (event)=>{
-                    // 배열에 담아둔 녹화 데이터들을 통합한 Blob객체 생성
-                    const videoBlob = new Blob(arrVideoData);
-
-                    let filename = "test.mp4";
-                    const file = new File([videoBlob],filename);
-                    console.log(videoBlob)
-
-                    // BlobURL(ObjectURL) 생성
-                    const blobURL = window.URL.createObjectURL(videoBlob);
-
-                    // 녹화된 영상 재생: 두번째 video태그에서 재생
-                    $video_record.src = blobURL;
-                    $video_record.play();
-
-                    // 기존 녹화 데이터 제거
-                    arrVideoData.splice(0);
-
-                }
-
-                // 3초 카운트다운 후 영상 틀고 녹화 시작.
-                var counter = 3;
-                countdownElement.innerHTML = counter;
-
-                var countdownInterval = setInterval(function() {
-                counter--;
-                countdownElement.innerHTML = counter;
-
-                if (counter === 0) {
-                    clearInterval(countdownInterval);
-                    mediaRecorder.start();
-                    video.play();
-                    countdownElement.innerHTML = "운동 시작! 운동이 끝나면 꼭 운동 끝 버튼을 누르세요!"
-                }
-                }, 1000); // 1초마다 반복 실행
-
-            }
-
-            // 녹화 종료 이벤트
-            $btn_stop.onclick = (event)=>{
-                console.log("녹화종료")
-                video.pause();
-                mediaRecorder.stop();
-                countdownElement.innerHTML = "운동 수고하셨습니다!"
-
-            }
-
-        </script>
+        <script src="../../static/health_do/training_cam.js"></script>
     </main>
 <!--    <footer>-->
 <!--        <h3>하단</h3>-->

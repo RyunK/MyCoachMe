@@ -14,7 +14,16 @@ import subprocess
 
 def health_do(request, video_id, user_id):
     # video_id를 request로 받고, 그 id로 db에 접근해 영상을 가져와야함.
-    return render(request, 'health_do/training.html', {'video_path': "/static/media/부메랑.mp4"})
+    video_path = ""
+    if video_id == 2:
+        video_path = "/static/media/부메랑.mp4"
+    return render(request, 'health_do/training.html')
+
+def loading(request, video_id, user_id):
+    return render(request, 'health_do/loading.html', {'video_id': video_id, 'user_id': user_id})
+
+def makeReport(request, video_id, user_id):
+    return render(request, 'health_do/making_report.html', {'video_id': video_id, 'user_id': user_id})
 
 
 from django.http import JsonResponse
